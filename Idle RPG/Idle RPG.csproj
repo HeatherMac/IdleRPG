@@ -20,6 +20,15 @@
     <Content Remove="ClientApp\**" />
   </ItemGroup>
 
+<<<<<<< .mine
+  <ItemGroup>
+    <None Update="Assets\helm1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+||||||| .r3
+=======
   <ItemGroup>
     <None Remove="ClientApp\components\Fight.tsx" />
   </ItemGroup>
@@ -41,6 +50,7 @@
     <None Include="wwwroot\images\monster6.png" />
   </ItemGroup>
 
+>>>>>>> .r6
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
