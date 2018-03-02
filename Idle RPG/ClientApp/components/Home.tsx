@@ -16,8 +16,12 @@ export class Home extends React.Component<RouteComponentProps<{}>, {}> {
             <Inventory />
             </div>
             <div className="row">
-            <h1>Battle</h1>
-            <Monsters health={100} image={""} />
+            <h1>Battle </h1>
+            <Monsters health={100} image={""} level={1} />
+            </div>
+            <div className="row">
+                <h1>Player </h1>
+                <Player health={100} image={""} level={1} />
             </div>
             </div>;
     }
@@ -66,15 +70,16 @@ export class Square extends React.Component<IInventorySlotProps> {
     }
 }
 
-interface Monster {
+interface Character {
     health: number;
     image: string;
+    level: number;
 }
 
-export class Monsters extends React.Component<Monster, Monster> {
-    constructor(props: Monster) {
+export class Monsters extends React.Component<Character, Character> {
+    constructor(props:any) {
         super(props);
-        this.state = { health: this.props.health, image: this.RandomImage() };
+        this.state = { health: this.props.health, image: this.RandomImage(), level: this.props.level };
     }
 
     RandomImage() {
@@ -85,15 +90,76 @@ export class Monsters extends React.Component<Monster, Monster> {
     }
 
     ChangeHealth(amount: number) {
-        let currentHealth = this.state.health;
+        let newHealth = this.state.health + amount;
 
-        this.setState({ health: currentHealth + amount });
+        if (newHealth <= 0)
+        {
+            newHealth = 100;
+            this.setState({ level: this.state.level + 1, image: this.RandomImage() });
+        }
+
+        this.setState({ health: newHealth });
     }
 
     public render() {
         return <div>
-            <p>{this.state.health}</p>
-            <img src={this.state.image} />
+            <div className="row">
+                <h2>Level {this.state.level}</h2>
+            </div>
+            <div className="row">
+                <p>{this.state.health}</p>
+            </div>
+            <div className="row">
+                <img src={this.state.image} />
+            </div>
+            <div className="row">
+                <button onClick={() => this.ChangeHealth(-10)}>Attack</button>
+            </div>
+        </div>;
+    }
+}
+
+export class Player extends React.Component<Character, Character> {
+    timerID: number;
+
+    constructor(props: any) {
+        super(props);
+        this.state = { health: this.props.health, image: "/images/player_avatar.png", level: this.props.level };
+    }
+
+    ChangeHealth(amount: number) {
+        let newHealth = this.state.health + amount;
+
+        if (newHealth <= 0) {
+            newHealth = 100;
+            this.setState({ level: 1 });
+        }
+
+        this.setState({ health: newHealth });
+    }
+
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.ChangeHealth(-5),
+            1000
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    public render() {
+        return <div>
+            <div className="row">
+                <h2>Level {this.state.level}</h2>
+            </div>
+            <div className="row">
+                <p>{this.state.health}</p>
+            </div>
+            <div className="row">
+                <img src={this.state.image} />
+            </div>
         </div>;
     }
 }
