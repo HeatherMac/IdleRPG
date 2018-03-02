@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idle RPG", "Idle RPG\Idle RPG.csproj", "{F99319DA-8750-4619-A709-E24C901D0BCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F99319DA-8750-4619-A709-E24C901D0BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F99319DA-8750-4619-A709-E24C901D0BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F99319DA-8750-4619-A709-E24C901D0BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F99319DA-8750-4619-A709-E24C901D0BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45EB81C1-A660-4D1C-AEFF-8E974BE5A52B}
+	EndGlobalSection
+EndGlobal
