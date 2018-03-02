@@ -11,9 +11,15 @@ export class Home extends React.Component<RouteComponentProps<{}>, {}> {
     public render() {
 
         return <div>
+            <div className="row">
             <h1>Idle RPG</h1>
             <Inventory />
-        </div>;
+            </div>
+            <div className="row">
+            <h1>Battle</h1>
+            <Monster health={100} />
+            </div>
+            </div>;
     }
     public renderInventory() {
 
@@ -56,6 +62,29 @@ export class Square extends React.Component<IInventorySlotProps> {
     public render() {
         return <div>
             <button className="square">{this.props.name}</button>
+        </div>;
+    }
+}
+
+interface Health {
+    health: number;
+}
+
+export class Monster extends React.Component<Health, Health> {
+    constructor(props: Health) {
+        super(props);
+        this.state = { health: this.props.health };
+    }
+
+    ChangeHealth(amount: number) {
+        let currentHealth = this.state.health;
+
+        this.setState({ health: currentHealth + amount });
+    }
+
+    public render() {
+        return <div>
+            <p>{this.state.health}</p>
         </div>;
     }
 }
