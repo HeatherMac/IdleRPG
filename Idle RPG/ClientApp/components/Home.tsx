@@ -17,7 +17,7 @@ export class Home extends React.Component<RouteComponentProps<{}>, {}> {
             </div>
             <div className="row">
             <h1>Battle</h1>
-            <Monster health={100} />
+            <Monsters health={100} image={""} />
             </div>
             </div>;
     }
@@ -66,14 +66,22 @@ export class Square extends React.Component<IInventorySlotProps> {
     }
 }
 
-interface Health {
+interface Monster {
     health: number;
+    image: string;
 }
 
-export class Monster extends React.Component<Health, Health> {
-    constructor(props: Health) {
+export class Monsters extends React.Component<Monster, Monster> {
+    constructor(props: Monster) {
         super(props);
-        this.state = { health: this.props.health };
+        this.state = { health: this.props.health, image: this.RandomImage() };
+    }
+
+    RandomImage() {
+        let random = (Math.floor(Math.random() * Math.floor(6)) + 1);
+        let path = "/images/monster" + random + ".png";
+
+        return path;
     }
 
     ChangeHealth(amount: number) {
@@ -85,6 +93,7 @@ export class Monster extends React.Component<Health, Health> {
     public render() {
         return <div>
             <p>{this.state.health}</p>
+            <img src={this.state.image} />
         </div>;
     }
 }

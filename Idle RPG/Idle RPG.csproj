@@ -20,6 +20,27 @@
     <Content Remove="ClientApp\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\components\Fight.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\Fight.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\monster1.png" />
+    <None Include="wwwroot\images\monster2.png" />
+    <None Include="wwwroot\images\monster3.png" />
+    <None Include="wwwroot\images\monster4.png" />
+    <None Include="wwwroot\images\monster5.png" />
+    <None Include="wwwroot\images\monster6.png" />
+  </ItemGroup>
+
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
